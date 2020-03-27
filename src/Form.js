@@ -68,7 +68,7 @@ const validateChange = e => {
     yup
       .reach(formSchema, e.target.name)
     //   .validate(e.target.value) //<=what cristina had, another student found a bug in this and supplied fix
-      .validate(e.target.name === "terms" ? e.target.checked : e.target.value)
+      .validate(e.target.type === "checkbox" ? e.target.checked : e.target.value)
       .then(valid => {
           console.log(`this is what valid is in validateChange: ${myErrors} ${e.target.name}`);
         setMyErrors({
@@ -167,10 +167,10 @@ const newFormData = {
                     <legend>Pick your toppings</legend>
                     <p>Check the ones you want</p>
                     <p>
-                        <label><input type="checkbox" name="cheese" value="cheese" onChange={inputChange}/> cheese</label>
-                        <label><input type="checkbox" name="peps" value="peps" onChange={inputChange}/> peps</label>
-                        <label><input type="checkbox" name="peppers" value="peppers" onChange={inputChange}/> peppers</label>
-                        <label><input type="checkbox" name="pineapple" value="pineapple" onChange={inputChange}/> pineapple</label>
+                        <label><input type="checkbox" name="cheese" value="cheese" onChange={inputChange} checked={myForm.cheese}/> cheese</label>
+                        <label><input type="checkbox" name="peps" value="peps" onChange={inputChange} checked={myForm.peps}/> peps</label>
+                        <label><input type="checkbox" name="peppers" value="peppers" onChange={inputChange} checked={myForm.peppers}/> peppers</label>
+                        <label><input type="checkbox" name="pineapple" value="pineapple" onChange={inputChange} checked={myForm.pineapple}/> pineapple</label>
                     </p>
                 </fieldset>
                 <label htmlFor="special">
